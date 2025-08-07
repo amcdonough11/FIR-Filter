@@ -81,5 +81,7 @@ AHB Subordinate RTL Diagram:
 FIR Filter State Machine:
 ![fir_std](https://github.com/user-attachments/assets/f184c5d5-46d7-4427-a224-4e77442c97ee)
 Coefficient Loader State Machine:
-![coeff_load_std](https://github.com/user-attachments/assets/1fddcb7e-0c38-4c13-83dc-b0e1654f3b10)
+
+<img width="310" height="494" alt="image" src="https://github.com/user-attachments/assets/e705024b-f184-4997-81bd-e790207c4f15" />
+
 
