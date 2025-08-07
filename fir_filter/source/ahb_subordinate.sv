@@ -196,10 +196,6 @@ always_comb begin
         3: fir_coefficient = F3_reg;
         default: fir_coefficient = 0;
     endcase
-    /*else if (hsel && hwrite && (htrans == 2'b10) && haddr == 3) begin
-        next_new_coeff_set_reg = 16'b1;
-    end
-    */
 end
 
 //assign
