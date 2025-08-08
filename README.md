@@ -3,7 +3,23 @@ AHB Finite Impulse Response (FIR) Filter Design
 
 ## Overview
 
-This is a design for a 4-point FIR Filter interfaced with an AHB subordinate. The design processes 16-bit input samples using 4 configurable 16-bit coefficients to produce a 16-bit filtered output, which can be accessed via the AHB bus. This is designed for digital signal processing in an AHB-based SoC. 
+This is a design for a 4-point FIR Filter interfaced with an AHB subordinate. The design processes 16-bit input samples using 4 configurable 16-bit coefficients to produce a 16-bit filtered output, which can be accessed via the AHB bus. This is designed for discrete convolution in an AHB-based SoC. 
+
+## Operation
+
+<img width="500" height="198" alt="image" src="https://github.com/user-attachments/assets/3a47c0db-5eda-46bd-a502-fd80a7a9ded7" />
+
+*From [Wikipedia - Finite Impulse Response](https://en.wikipedia.org/wiki/Finite_impulse_response)*
+
+This figure captures the flow of an FIR filter operation. Each new input sample enters at x[n] and is passed through a series of unit delays (represented by (z^{-1}) ), shifting the signal to the right by one time step at each stage. Each delayed sample is multiplied by a corresponding coefficient (b_{i}), and the resulting products are summed to produce the output y[n]. 
+
+This operation follows the discrete convolution equation represented by: 
+
+<img width="550" height="240" alt="image" src="https://github.com/user-attachments/assets/7d998c03-7729-4383-9c44-883825030b3b" />
+
+*From [Wikipedia - Finite Impulse Response](https://en.wikipedia.org/wiki/Finite_impulse_response)*
+
+This design is a 4-point FIR Filter, meaning 4 coefficients and 4 delayed input samples are used to compute each output. 
 
 ## Structure 
 
