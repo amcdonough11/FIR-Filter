@@ -3,7 +3,7 @@ AHB Finite Impulse Response (FIR) Filter Design
 
 ## Overview
 
-This is a design for a 4-coefficient FIR Filter interfaced with an AHB subordinate. The design processes 16-bit input samples using 4 configurable 16-bit coefficients to produce a 16-bit filtered output, which can be accessed via the AHB bus. This is designed for digital signal processing in an AHB-based SoC. 
+This is a design for a 4-point FIR Filter interfaced with an AHB subordinate. The design processes 16-bit input samples using 4 configurable 16-bit coefficients to produce a 16-bit filtered output, which can be accessed via the AHB bus. This is designed for digital signal processing in an AHB-based SoC. 
 
 ## Structure 
 
