@@ -5,6 +5,9 @@ AHB Finite Impulse Response (FIR) Filter Design
 
 This is a design for a 4-point FIR Filter interfaced with an AHB subordinate. The design processes 16-bit input samples using 4 configurable 16-bit coefficients to produce a 16-bit filtered output, which can be accessed via the AHB bus. This is designed for discrete convolution in an AHB-based SoC. 
 
+<img width="1200" height="400" alt="image" src="https://github.com/user-attachments/assets/bf8a5d37-8aad-457e-ab41-c38a2d5dbb48" />
+
+
 ## Operation
 
 <img width="500" height="198" alt="image" src="https://github.com/user-attachments/assets/3a47c0db-5eda-46bd-a502-fd80a7a9ded7" />
@@ -56,17 +59,16 @@ This design is a 4-point FIR Filter, meaning 4 coefficients and 4 delayed input 
 - Synchronous Design: Operates with a single clock (clk) and active-low reset (n_rst)
 
 ## AHB Memory Map
-The AHB subordinate interface uses a 4-bit address bus (haddr[3:0]):
-
-- 0x0, 0x1: Status register (read-only, bit 8: err, bit 0: modwait || new_coefficient_set).
-
-- 0x2, 0x3: Results register (read-only, filtered output fir_out).
-
-- 0x4, 0x5: New sample register (read/write, input sample_data).
-
-- 0x6-0xD: Coefficient registers F0-F3 (read/write, 16-bit each).
-
-- 0xE: New coefficient set register (read/write, triggers coefficient loading).
+| HADDR | Size (Bytes) |Access| Description |
+|---|---|---|---|
+|0x0|2|Read Only| Status Reg: <br> 0 -> IDLE <br> 1 -> Busy <br> 2 -> Error |
+|0x2|2|Read Only| Result Reg|
+|0x4|2|Read/Write| New Sample Reg|
+|0x6|2|Read/Write| F0 Coeff Reg|
+|0x8|2|Read/Write| F1 Coeff Reg|
+|0xA|2|Read/Write| F2 Coeff Reg|
+|0xC|2|Read/Write| F3 Coeff Reg|
+|0xE|1|Read/Write| New Coefficient Set Confirmation Reg: <br> - Set to 1 to activate <br> - Cleared to 0 when loading completed|
 
 - Others: Invalid addresses return hresp = 1 (error).
 
@@ -98,6 +100,6 @@ FIR Filter State Machine:
 ![fir_std](https://github.com/user-attachments/assets/f184c5d5-46d7-4427-a224-4e77442c97ee)
 Coefficient Loader State Machine:
 
-<img width="310" height="494" alt="image" src="https://github.com/user-attachments/assets/e705024b-f184-4997-81bd-e790207c4f15" />
+<img width="600" height="900" alt="image" src="https://github.com/user-attachments/assets/e705024b-f184-4997-81bd-e790207c4f15" />
 
 
